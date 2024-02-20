@@ -1,0 +1,63 @@
+html{
+position:relative;
+min-height:100%;
+
+}
+
+body {
+    background: white url("images/background.png");
+
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    padding: 2rem 0rem;
+}
+a{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    target="_blank";
+}
+
+ul.errorlist {
+    padding-left: 0;
+}
+
+ul.errorlist > li {
+    list-style: none;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-brand {
+    font-family: 'Satisfy', cursive;
+}
+
+.glyphicon-star {
+    color: #CCCCCC;
+    font-size: 16px;
+}
+
+.glyphicon-star.active {
+    color: #FDB230;
+}
+
+
+
+
+
+.gallery{
+    margin-top:20px;
+    margin-bottom:20px;
+
+}
+
+.gallery .img-thumbnail{
+height:250px;
+width:300px;
+
+}
+
+.button{
+    font-weight: bold;
+}

@@ -1,0 +1,50 @@
+
+
+
+
+
+<div class="container" style="border:solid">
+  <div class="row">
+    <div class="col-md-6 news-slider">
+	{% for n in news %}
+		<div class="slide" style="border:groove">
+		  <div class="blogPost--small " >
+			<div class="media">
+			  <span class="pull-left"><a href="{% url 'nuistcis:news_detail' n.id %}"><span class="date">
+				  <span>{{ n.news_date}}</span> <small></small></span></a></span>
+			  <div class="media-body">
+				<h4 class="media-heading">
+				  <a href="{% url 'nuistcis:news_detail' n.id %}">{{ n.news_title }}</a>
+				</h4>
+				<p>
+				  {{n.news_content|truncatechars:150}}
+				</p>
+			  </div>
+			</div>
+		  </div><!-- / blogPost -->
+
+		</div><!-- / slide1 -->
+	{% endfor%}
+
+
+    </div>
+
+
+  </div>
+</div>
+
+<div class="container-center newsNav ">
+	<div class="row">
+<!--		<div class="col-md-3">-->
+<!--			<a href="#" class="link-underline">See All News</a>-->
+<!--		</div>-->
+		<div class="col-md-3 text-right">
+			<button id="ct-js-district-calendar--prev" type="button" class="slick-arrow next"><img src="https://www.solodev.com/assets/news-slider/arrow-prev.jpg" alt="Previous"></button>
+
+			<button id="ct-js-district-calendar--next" type="button" class="slick-arrow next"><img src="https://www.solodev.com/assets/news-slider/arrow-next.jpg" alt="Next"></button>
+		</div>
+	</div>
+
+</div>
+
+

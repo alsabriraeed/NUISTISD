@@ -1,0 +1,32 @@
+{% extends 'nuistcis/base.html' %}
+{% block title%} {{news.news_title}}
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid" style="border:groove; background-color:white ; border-color:lightblue">
+    <h3> {{news.news_title}}</h3>
+    <small> Posted by: {{ news.new_author }}</small>
+    <hr>
+    <p> {{ news.news_content }}
+<!--        {{ news.newsimages_set.count }}-->
+
+
+    </p>
+
+    <div class="row gallery">
+        {% for p in news.newsimages_set.all %}
+<!--        <div class="col-md-3">-->
+            <img src="{{ p.news_image.url }}" alt="Image not found"  class="mg-thumbnail">
+<!--            <p>-->
+<!--               {{ p.news_image.url}}-->
+<!--            </p>-->
+
+<!--        </div>-->
+        {% endfor %}
+    </div>
+    <div id="like-section">
+    </div>
+</div>
+{% endblock %}
+
+<!--        {% include 'nuistcis/like_section.html' %}-->

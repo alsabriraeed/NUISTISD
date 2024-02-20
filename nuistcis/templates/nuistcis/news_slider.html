@@ -1,0 +1,393 @@
+
+{% extends 'nuistcis/base.html' %}
+{% block title %}Home{% endblock %}
+{% block deparments_active %}active{% endblock %}
+
+{% block body %}
+
+
+<div class="container-fluid" style="border:groove; background-color:mediumaquamarine ; border-color:lightblue">
+
+	<!--light slider-->
+	  <div id="slider1" class="csslider infinity inside" style=" border:groove; border-color:white">
+        <input type="radio" name="slides" id="slides_1" checked />
+        <input type="radio" name="slides" id="slides_2" />
+        <input type="radio" name="slides" id="slides_3" />
+        <input type="radio" name="slides" id="slides_4" />
+        <ul>
+			{% for n in departments %}
+            <li>
+               <a href="{% url 'nuistcis:news_detail' n.id %}">  <h1>{{ n.department_title }}</h1> </a>
+				 <img src="{{ n.department_logo.url }}" alt="Image not found"  class="mg-thumbnail">
+
+            </li>
+
+			{% endfor%}
+        </ul>
+        <div class="arrows">
+            <label for="slides_1"></label>
+            <label for="slides_2"></label>
+            <label for="slides_3"></label>
+            <label for="slides_4"></label>
+        </div>
+        <div class="navigation">
+            <div>
+                <label for="slides_1"></label>
+                <label for="slides_2"></label>
+                <label for="slides_3"></label>
+                <label for="slides_4"></label>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+	<!--Body -->
+
+<!--<div class="container-fluid">-->
+
+<!--    <div class="row">-->
+
+<!--        <div class="col-sm-12 col-md-7">-->
+
+<!--            <div class="panel panel-default">-->
+<!--                <div class="panel-body">-->
+<!--                    <div class="container">-->
+
+
+<!--                      {% for n in news %}-->
+<!--&lt;!&ndash;                      <div class="row">&ndash;&gt;-->
+
+
+<!--                        <div class="col-6 col-sm-4 col-lg-3.2">-->
+<!--                            <a href="#" class="list-group-item list-group-item-action active"> News</a>-->
+<!--                          <div class="card">-->
+<!--                            <div class="card-header">-->
+<!--                               {{ n.news_title }}-->
+<!--                            </div>-->
+<!--                            <div class="card-body">-->
+<!--                              <h4 class="card-title">{{ n.new_author }}</h4>-->
+<!--                              <h6 class="card-subtitle mb-2">{{ n.news_date}}</h6>-->
+<!--                              <p class="card-text">{{n.news_content|truncatechars:100}} </p>-->
+<!--                              <a href="{% url 'nuistcis:news_detail' n.id %}" class="btn btn-danger">Detail</a>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+
+<!--&lt;!&ndash;                     </div>&ndash;&gt;-->
+<!--                        {% endfor%}-->
+<!--                    </div>-->
+
+
+<!--                      {% for n in news %}-->
+
+
+
+<!--                        <div class="col-12 col-sm-6 col-lg-4">-->
+<!--                            <a href="#" class="list-group-item list-group-item-action active"> News</a>-->
+<!--                          <div class="card">-->
+<!--                            <div class="card-header">-->
+<!--                               {{ n.news_title }}-->
+<!--                            </div>-->
+<!--                            <div class="card-body">-->
+<!--                              <h4 class="card-title">{{ n.new_author }}</h4>-->
+<!--                              <h6 class="card-subtitle mb-2">{{ n.news_date}}</h6>-->
+<!--                              <p class="card-text">{{n.news_content|truncatechars:100}} </p>-->
+<!--                              <a href="{% url 'nuistcis:news_detail' n.id %}" class="btn btn-danger">Detail</a>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+
+<!--                        {% endfor%}-->
+
+
+<!--&lt;!&ndash;            -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--&lt;!&ndash;                    -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h3>Add a New Deparment</h3>&ndash;&gt;-->
+<!--                    {% if error_message %}-->
+<!--                        <p><strong>{{ error_message }}</strong></p>-->
+<!--                    {% endif %}-->
+<!--                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">-->
+<!--                        {% csrf_token %}-->
+<!--                        {% include 'nuistcis/form_template.html' %}-->
+
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="col-sm-12 col-md-5">-->
+<!--&lt;!&ndash;            <div class="panel panel-default">&ndash;&gt;-->
+<!--			 <div class="panel panel-default">-->
+
+<!--        <div class="list-group">-->
+<!--          <a href="#" class="list-group-item list-group-item-action active">-->
+<!--            NOTICE-->
+<!--          </a>-->
+<!--          {% for n in note %}-->
+<!--          <a href="#" class="list-group-item list-group-item-action">{{n.note_title}}</a>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--        {% for n in note %}-->
+<!--              {% if forloop.first %}-->
+<!--                <div class="jumbotron">-->
+<!--                  <h1 class="display-4">{{ n.note_title }}</h1>-->
+<!--                  <p class="lead">{{  n.note_content  }}</p>-->
+<!--                  <hr class="my-4">-->
+<!--                  <p> {{  n.note_date  }}</p>-->
+<!--                    <hr class="my-4">-->
+<!--                    p> {{  n.note_author  }}</p>-->
+
+<!--                </div>-->
+<!--               {%else %}-->
+<!--                {% endif %}-->
+<!--        {% endfor %}-->
+<!--      </div>-->
+
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--</div>-->
+
+
+
+
+<!---->
+
+<!--    before the slider -->
+    <div class="container-fluid "  style="background-color:light ; border:ridge;" >
+    	<div class="featured">
+			<h2>Our Programs</h2>
+			<ul class="clearfix">
+
+
+                {% for n in programs %}
+                {% if forloop.counter  < 5  %}
+				<li>
+					<div class="frame1">
+						<div class="box">
+							<img src="{{ n.program_mainphoto.url }}" alt="Img" height="130" width="197">
+						</div>
+					</div>
+					<p>
+						<b>{{n.program_name}}</b> {{n.program_description |truncatechars:100}}
+					</p>
+					<a href="{% url 'nuistcis:programs_listdetail' n.id %}" class="btn btn-danger">Read More</a>
+				</li>
+                {% endif %}
+				 {% endfor %}
+			</ul>
+		</div>
+</div>
+        <!-- schools -->
+        <div  class="container-fluid "  style="background-color:light ; border:ridge;">
+                <div class="contact">
+					<p>
+						For more Information Please Call: <b>000-000-000</b> Or you can visit us at: <b>ICP备14038223号 <br> 南京信息工程大学 版权所有</b>
+					</p>
+				</div>
+
+<!--        -->
+                        <div class="featured"  style="background-color:light ;" >
+                            <h2>NUIST Department</h2>
+                            <ul class="clearfix">
+                                {% for n in departments %}
+                                {% if forloop.counter  < 4  %}
+                                <li>
+                                    <div class="frame1" style="background-color:light ;">
+                                        <div class="box" style="background-color:light ;">
+                                            <img src="{{ n.department_logo.url }}" alt="Img" height="130" width="197">
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <b>{{n.department_title}}</b> {{n.description |truncatechars:100}}
+                                    </p>
+                                    <a href="{% url 'nuistcis:programs_listdetail' n.id %}" class="btn btn-danger">Read More</a>
+                                </li>
+                                 {% endif %}
+                                 {% endfor %}
+                            </ul>
+                        </div>
+            </div>
+<!-- end schools -->
+
+
+ <!-- schools -->
+<!--        <div  class="container-fluid "  style="background-color:light ; border:ridge;">-->
+<!--                <div class="contact">-->
+<!--					<p>-->
+<!--						For more Information Please Call: <b>000-000-000</b> Or you can visit us at: <b>ICP备14038223号 <br> 南京信息工程大学 版权所有</b>-->
+<!--					</p>-->
+<!--				</div>-->
+
+<!--&lt;!&ndash;        &ndash;&gt;-->
+<!--                        <div class="featured" style="background-color:light " >-->
+<!--                            <h2>NUIST Department</h2>-->
+<!--                            <ul class="clearfix">-->
+<!--                                {% for n in departments %}-->
+<!--                                {% if forloop.counter  < 4  %}-->
+<!--                                <li>-->
+<!--                                    <div class="frame1">-->
+<!--                                        <div class="box">-->
+<!--                                            <img src="{{ n.department_logo.url }}" alt="Img" height="130" width="197">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <p>-->
+<!--                                        <b>{{n.department_title}}</b> {{n.description |truncatechars:100}}-->
+<!--                                    </p>-->
+<!--                                    <a href="{% url 'nuistcis:programs_listdetail' n.id %}" class="btn btn-danger">Read More</a>-->
+<!--                                </li>-->
+<!--                                 {% endif %}-->
+<!--                                 {% endfor %}-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--            </div>-->
+<!-- end schools -->
+
+<!-- notes ---------->
+        <div  class="container-fluid-expand "  style="background-color:light;  padding: 10px; ">
+            <h2>NUIST News</h2>
+               <ul id="featured">
+                   {% for n in news %}
+					<li style="border:ridge;  padding: 20px; ">
+						<div>
+							<img src="{{ n.news_mainphoto.url }}" alt="Img"> <a href="{% url 'nuistcis:news_detail' n.id %}"></a>
+						</div>
+						<div class="details">
+							<h4> {{ n.news_title |truncatechars:20 }}</h4>
+							<p>
+								{{n.news_content |truncatechars:20 }}
+							</p>
+						</div>
+					</li>
+
+                   {% endfor %}
+
+				</ul>
+            </div>
+<!--&lt;!&ndash; end notes-->
+
+<!--	  end light slider-->
+<div  class="container-fluid "  style="background-color:white ; border:ridge;">
+          <!--    --------------------------------->
+
+
+
+
+  <div class="row-right">
+    <div class="col-md-6 news-slider">
+	{% for n in news %}
+		<div class="slide" style="border:groove ; border-color:lightblue">
+		  <div class="blogPost--small " >
+			<div class="media">
+			  <span class="pull-left"><a href="{% url 'nuistcis:news_detail' n.id %}"><span class="date">
+				  <span>{{ n.news_date}}</span> <small></small></span></a></span>
+               <div>
+                     <a href="{% url 'nuistcis:news_detail' n.id %}" target="_blank">
+                         <img src="{{ n.news_mainphoto.url }}" alt="Image not found"  class="mg-thumbnail">
+                     </a>
+               <h4 class="media-heading">
+				  <a href="{% url 'nuistcis:news_detail' n.id %}">{{ n.news_title }}</a>
+				</h4>
+               </div>
+
+			  <div class="media-body">
+
+				<p>
+<!--				  {{n.news_content|truncatechars:150}}-->
+				</p>
+			  </div>
+			</div>
+		  </div><!-- / blogPost -->
+
+		</div><!-- / slide1 -->
+	{% endfor%}
+
+
+    </div>
+
+
+  </div>
+
+
+
+<!-- left -->
+    <div class="row-left">
+    <div class="col-md-6 news-slider">
+	{% for n in program %}
+
+		<div class="slide" style="border:groove ; border-color:lightblue">
+		  <div class="blogPost--small ">
+			<div class="media">
+			  <span class="pull-left"><a href="{% url 'nuistcis:news_detail' n.id %}"><span class="date">
+				  <span>{{ n.program_duration }} years </span> <small></small></span></a></span>
+               <div>
+                     <a href="{% url 'nuistcis:news_detail' n.id %}" target="_blank">
+                         <img src="{{ n.program_mainphoto.url }}" alt="Image not found"  class="mg-thumbnail">
+                     </a>
+               <h4 class="media-heading">
+				  <a href="{% url 'nuistcis:programs_listdetail' n.id %}">{{ n.program_name }}</a>
+				</h4>
+               </div>
+
+			  <div class="media-body">
+
+				<p>
+<!--				  {{n.news_content|truncatechars:150}}-->
+				</p>
+			  </div>
+			</div>
+		  </div><!-- / blogPost -->
+
+		</div><!-- / slide1 -->
+	{% endfor%}
+
+
+    </div>
+
+
+  </div>
+
+</div>
+<!------------------------------for sliders-->
+
+<!--end sliders -->
+
+
+  <!-------------------------------------------section -->
+<div panel panel-default>
+<div class="our-webcoderskull padding-lg">
+  <div class="container">
+    <div class="row heading heading-icon">
+        <h2>Outstanding Students</h2>
+    </div>
+    <ul class="row">
+        {% for n in scholars %}
+        {% if forloop.counter  < 5  %}
+      <li class="col-12 col-md-6 col-lg-3">
+          <div class="cnt-block equal-hight" style="height: 349px;">
+            <figure><img src="{{ n.scholar_photo.url }}" class="img-responsive" alt=""></figure>
+            <h3><a href="{% url 'nuistcis:scholar_detail' n.id %}">{{ n.scholar_name }}</a></h3>
+            <p>{{ n.scholar_job }}</p>
+
+          </div>
+      </li>
+        {%endif%}
+        {% endfor%}
+
+    </ul>
+  </div>
+</div>
+
+</div>
+<!---------------------------------------------end section-->
+<!---->
+{% endblock %}

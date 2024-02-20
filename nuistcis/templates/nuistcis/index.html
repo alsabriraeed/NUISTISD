@@ -1,0 +1,110 @@
+{% extends 'nuistcis/base.html' %}
+{% block departments_active %}active{% endblock %}
+
+{% block body %}
+<div class="departments-container container-fluid"  style="background-color:white ; border:ridge;">
+
+    <!-- Departments -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>NUIST's Departments</h3>
+        </div>
+        {% if departments %}
+            {% for department in departments %}
+                <div class="col-sm-4 col-lg-2">
+                    <div class="thumbnail">
+                        <a href="{% url 'nuistcis:detail' department.id %}">
+                            <img src="{{ department.department_logo.url }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <h2>{{ department.department_title }}</h2>
+                            <h4>{{ department.artist }}</h4>
+
+                            <!-- View Details -->
+                            <a href="{% url 'nuistcis:detail' department.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+
+                            <!-- Delete Department -->
+                            <form action="{% url 'nuistcis:delete_department' department.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="department_id" value="{{ department.id }}" />
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </form>
+
+                            <!-- Favorite Department -->
+                            <a href="{% url 'nuistcis:favorite_department' department.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
+                                <span class="glyphicon glyphicon-star {% if department.is_favorite %}active{% endif %}"></span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+            {% endfor %}
+        {% else %}
+            <div class="col-sm-12">
+                <br>
+                <a href="{% url 'nuistcis:create_department' %}">
+                    <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp; Add An Department
+                    </button>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- If user searches and there are activities -->
+    {% if activities %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Activities</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Activity Title</th>
+                                    <th>Artist</th>
+                                    <th>Audio File</th>
+                                    <th>Department</th>
+                                    <th>Favorite</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for activity in activities %}
+                                    <tr>
+                                        <td>{{ activity.activity_title }}</td>
+                                        <td>{{ activity.department.artist }}</td>
+                                        <td>
+                                            <a target="_blank" href="{{ activity.audio_file.url }}">
+                                                <button type="button" class="btn btn-success btn-xs">
+                                                    <span class="glyphicon glyphicon-play"></span>&nbsp; Play
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'nuistcis:detail' activity.department.id %}">
+                                                <img src="{{ activity.department.department_logo.url }}" class="img-responsive" style="width: 20px; float: left; margin-right: 10px;" />
+                                            </a>
+                                            <a href="{% url 'nuistcis:detail' activity.department.id %}">{{ activity.department.department_title }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'nuistcis:favorite' activity.id %}" class="btn-favorite"><span class="glyphicon glyphicon-star {% if activity.is_favorite %}active{% endif %}"></span></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+<div>
+</div>
+{% endblock %}

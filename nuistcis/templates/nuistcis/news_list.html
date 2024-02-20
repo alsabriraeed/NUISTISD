@@ -1,0 +1,21 @@
+{% extends 'nuistcis/base.html' %}
+{% block title%} {{news.news_title}} {% endblock %}
+
+{% block body%}
+<div style="background-color:white ; border:ridge;">
+    {% for n in news %}
+        <a href="{% url 'nuistcis:news_detail' n.id %}">
+            {{ n.news_title }}</a>
+            <br>
+        <small>{{ n.new_author }}</small>
+        <p> {{n.news_content}}   </p>
+        <p>{{ n.news_date}}</p>
+
+        <br>
+    {% endfor%}
+</div>
+{% endblock %}
+
+
+
+
