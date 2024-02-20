@@ -21,4 +21,4 @@ We use a database. The current version is SQLite, but we can move to any other D
 
 # How does it work?
 
-Please read the NUISTISD Instructions file <div align=left> <a href="NUISTISD Instructions.pdf">here</a>  </div> . 
+Please read the NUISTISD Instructions file  <a href="NUISTISD Instructions.pdf">here</a>. 
