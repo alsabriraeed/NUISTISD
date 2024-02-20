@@ -6,6 +6,7 @@ NUISTISD has two sides: the admin and the ordinary user. Everything on our websi
 NUISTISD is a single-page website.
 We use a database. The current version is SQLite, but we can move to any other DBMS system because Django creates the model first. 
 
+
 ```
 ** We used Django 2.2.3, which is a high-level Python Web framework.**
 **CSS**
@@ -13,8 +14,10 @@ We use a database. The current version is SQLite, but we can move to any other D
 **JQuery**
 **Bootstrap**
 ```
+# programs page
+
 <br>
-<div align=left> <img src="pic/AutoTGRL.SVG" height="100%" width="100%"/> </div>
+<div align=left> <img src="pic/prog.SVG" height="100%" width="100%"/> </div>
 ## How does it work?
 
 Please read the instruction PDF file here. 
