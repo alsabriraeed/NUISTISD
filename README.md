@@ -1,7 +1,7 @@
 
 # What is NUISTISD?
 
-NUISTISD is a website for NUIST that provides information about schools, departments, programs, News, Notes, activities, etc., as shown in the screenshot.
+NUISTISD is a website for a university that provides information about schools, departments, programs, News, Notes, activities, etc., as shown in the screenshot.
 NUISTISD has two sides: the admin and the ordinary user. Everything on our website is dynamic, even the logos. We tried to use new website creation techniques, such as navigating, sliding, etc. We used the groups and users to manage the privileges for users.
 NUISTISD is a single-page website.
 We use a database. The current version is SQLite, but we can move to any other DBMS system because Django creates the model first. 
@@ -17,7 +17,7 @@ We use a database. The current version is SQLite, but we can move to any other D
 # programs page
 
 <br>
-<div align=left> <img src="pic/prog.SVG" height="100%" width="100%"/> </div>
+<div align=left> <img src="pic/prog.gif" height="100%" width="100%"/> </div>
 ## How does it work?
 
 Please read the instruction PDF file here. 
