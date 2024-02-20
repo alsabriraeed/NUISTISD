@@ -18,6 +18,7 @@ We use a database. The current version is SQLite, but we can move to any other D
 
 <br>
 <div align=left> <img src="prog.png" height="100%" width="100%"/> </div>
-## How does it work?
 
-Please read the instruction PDF file here. 
+# How does it work?
+
+Please read the NUISTISD Instructions file <div align=left> <a href="NUISTISD Instructions.pdf">here</a>  </div> . 
