@@ -17,7 +17,7 @@ We use a database. The current version is SQLite, but we can move to any other D
 # programs page
 
 <br>
-<div align=left> <img src="pic/prog.gif" height="100%" width="100%"/> </div>
+<div align=left> <img src="prog.png" height="100%" width="100%"/> </div>
 ## How does it work?
 
 Please read the instruction PDF file here. 
